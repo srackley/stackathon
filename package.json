@@ -38,6 +38,7 @@
     "chokidar": "^1.7.0",
     "epub": "^0.2.0",
     "epub-parser": "^0.2.5",
+    "firebase": "^4.6.2",
     "minimist": "^1.2.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0"
