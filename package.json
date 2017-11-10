@@ -7,11 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dev",
     "build": "webpack -p",
-    
     "watch-lib": "npm run build-lib -- -w",
     "build-lib": "webpack --config lib/webpack.config.js",
     "build-lib-prod": "npm run build-lib -- -p",
-    
     "build-prod": "npm run build-lib-prod && npm run build",
     "deploy": "npm run build-prod && npx firebase deploy"
   },
@@ -19,20 +17,27 @@
   "author": "Ashi Krishnan <hi@ashi.io>",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^0.17.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "brfs": "^1.4.3",
     "firebase-tools": "^3.14.0",
     "react-hot-loader": "^3.1.2",
     "through2": "^2.0.3",
+    "transform-loader": "^0.2.4",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4",
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
+    "buffer-loader": "0.0.1",
     "chokidar": "^1.7.0",
+    "epub": "^0.2.0",
+    "epub-parser": "^0.2.5",
     "minimist": "^1.2.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0"
