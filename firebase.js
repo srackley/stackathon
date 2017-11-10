@@ -20,3 +20,4 @@ export function writeBookData(title, author) {
     author
   });
 }
+export default firebase;
