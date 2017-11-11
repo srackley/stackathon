@@ -37,7 +37,7 @@ class Books extends Component {
           <section className="display-book">
             <ul className="flex-grid">
               {this.state.books.map(book => (
-                <Link to="">
+                <Link to={`/books/${book.id}`}>
                   <div className="singleBook">
                     <li key={book.id}>
                       <h3>{book.title}</h3>
