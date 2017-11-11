@@ -6,24 +6,21 @@ class Books extends Component {
   constructor() {
     super();
     this.state = {
-      currentBook: '',
-      author: '',
       books: []
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const booksRef = firebase.database().ref('books');
-    booksRef.on('value', (snapshot) => {
+    booksRef.orderByChild('author').on('value', (snapshot) => {
       const books = snapshot.val();
       const newState = [];
-      for (const book in books) {
+      books.forEach(book =>
         newState.push({
-          id: book,
-          title: books[book].title,
-          author: books[book].author,
-        });
-      }
+          id: book.id,
+          title: book.title,
+          author: book.author,
+        }));
       this.setState({
         books: newState
       });
@@ -37,9 +34,9 @@ class Books extends Component {
           <section className="display-book">
             <ul className="flex-grid">
               {this.state.books.map(book => (
-                <Link to={`/books/${book.id}`}>
+                <Link key={book.id} to={`/books/${book.id}`}>
                   <div className="singleBook">
-                    <li key={book.id}>
+                    <li>
                       <h3>{book.title}</h3>
                       <p>{book.author}
                       </p>
@@ -54,4 +51,5 @@ class Books extends Component {
     );
   }
 }
+
 export default Books;

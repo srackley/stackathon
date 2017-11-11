@@ -22,6 +22,10 @@ li {
   width: 250px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .flex-grid {
   display: flex;
   flex-direction: row;

@@ -16,7 +16,7 @@ async function loadBook() {
       //   console.log(data);
       // });
 
-      writeBookData(epub.metadata.title, epub.metadata.creator, i);
+      writeBookData(i, epub.metadata.title, epub.metadata.creator);
     });
 
     epub.parse();

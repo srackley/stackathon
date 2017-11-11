@@ -1,35 +1,35 @@
-[debug] [2017-11-11T00:21:44.910Z] ----------------------------------------------------------------------
-[debug] [2017-11-11T00:21:44.912Z] Command:       /usr/local/bin/node /Users/shelby/gha/spark/node_modules/.bin/firebase serve --only functions,hosting
-[debug] [2017-11-11T00:21:44.912Z] CLI Version:   3.14.0
-[debug] [2017-11-11T00:21:44.912Z] Platform:      darwin
-[debug] [2017-11-11T00:21:44.912Z] Node Version:  v8.4.0
-[debug] [2017-11-11T00:21:44.913Z] Time:          Fri Nov 10 2017 19:21:44 GMT-0500 (EST)
-[debug] [2017-11-11T00:21:44.913Z] ----------------------------------------------------------------------
+[debug] [2017-11-11T02:20:58.766Z] ----------------------------------------------------------------------
+[debug] [2017-11-11T02:20:58.768Z] Command:       /usr/local/bin/node /Users/shelby/gha/spark/node_modules/.bin/firebase serve --only functions,hosting
+[debug] [2017-11-11T02:20:58.768Z] CLI Version:   3.14.0
+[debug] [2017-11-11T02:20:58.768Z] Platform:      darwin
+[debug] [2017-11-11T02:20:58.768Z] Node Version:  v8.4.0
+[debug] [2017-11-11T02:20:58.769Z] Time:          Fri Nov 10 2017 21:20:58 GMT-0500 (EST)
+[debug] [2017-11-11T02:20:58.769Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-11-11T00:21:44.921Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-11-11T00:21:44.922Z] > authorizing via signed-in user
-[debug] [2017-11-11T00:21:44.923Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/kindleshare-890d0  
- Fri Nov 10 2017 19:21:44 GMT-0500 (EST)
-[debug] [2017-11-11T00:21:45.341Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-11T00:21:45.342Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/kindleshare-890d0/tokens  
- Fri Nov 10 2017 19:21:45 GMT-0500 (EST)
-[debug] [2017-11-11T00:21:45.654Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-11T02:20:58.778Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-11T02:20:58.778Z] > authorizing via signed-in user
+[debug] [2017-11-11T02:20:58.779Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/kindleshare-890d0  
+ Fri Nov 10 2017 21:20:58 GMT-0500 (EST)
+[debug] [2017-11-11T02:20:59.515Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-11T02:20:59.516Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/kindleshare-890d0/tokens  
+ Fri Nov 10 2017 21:20:59 GMT-0500 (EST)
+[debug] [2017-11-11T02:20:59.943Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/shelby/gha/spark'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2017-11-11T00:21:45.925Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/kindleshare-890d0  
- Fri Nov 10 2017 19:21:45 GMT-0500 (EST)
-[debug] [2017-11-11T00:21:45.925Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/kindleshare-890d0/apiKeys  
- Fri Nov 10 2017 19:21:45 GMT-0500 (EST)
-[debug] [2017-11-11T00:21:45.925Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/kindleshare-890d0  
- Fri Nov 10 2017 19:21:45 GMT-0500 (EST)
-[debug] [2017-11-11T00:21:46.231Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-11T00:21:46.240Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-11T00:21:46.240Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/328428959553/clients/_:getWebAppConfig  
- Fri Nov 10 2017 19:21:46 GMT-0500 (EST)
-[debug] [2017-11-11T00:21:46.297Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-11T00:21:46.601Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-11T02:21:00.193Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/kindleshare-890d0  
+ Fri Nov 10 2017 21:21:00 GMT-0500 (EST)
+[debug] [2017-11-11T02:21:00.193Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/kindleshare-890d0/apiKeys  
+ Fri Nov 10 2017 21:21:00 GMT-0500 (EST)
+[debug] [2017-11-11T02:21:00.194Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/kindleshare-890d0  
+ Fri Nov 10 2017 21:21:00 GMT-0500 (EST)
+[debug] [2017-11-11T02:21:00.495Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-11T02:21:00.496Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/328428959553/clients/_:getWebAppConfig  
+ Fri Nov 10 2017 21:21:00 GMT-0500 (EST)
+[debug] [2017-11-11T02:21:00.509Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-11T02:21:00.585Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-11T02:21:00.822Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
 

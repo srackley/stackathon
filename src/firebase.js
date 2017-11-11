@@ -14,8 +14,8 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-export function writeBookData(title, author, id) {
-  firebase.database().ref(`books/${title}`).set({
+export function writeBookData(id, title, author) {
+  firebase.database().ref(`books/${id}`).set({
     id,
     title,
     author

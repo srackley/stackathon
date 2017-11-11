@@ -12,7 +12,7 @@ import('../index.css');
 export default () => (
   <Switch>
     <Route exact path="/" component={Authors} />
+    <Route exact path="/books/:bookId" component={SingleBook} />
     <Route exact path="/books" component={Books} />
-    <Route exact path="/books/:bookId" comoponent={SingleBook} />
   </Switch>
 );
