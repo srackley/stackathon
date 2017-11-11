@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import firebase from '../firebase';
 
 class Books extends Component {
@@ -36,13 +37,15 @@ class Books extends Component {
           <section className="display-book">
             <ul className="flex-grid">
               {this.state.books.map(book => (
-                <div className="singleBook">
-                  <li key={book.id}>
-                    <h3>{book.title}</h3>
-                    <p>{book.author}
-                    </p>
-                  </li>
-                </div>
+                <Link to="">
+                  <div className="singleBook">
+                    <li key={book.id}>
+                      <h3>{book.title}</h3>
+                      <p>{book.author}
+                      </p>
+                    </li>
+                  </div>
+                </Link>
                     ))}
             </ul>
           </section>

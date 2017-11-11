@@ -9,12 +9,12 @@ async function loadBook() {
       .then(_ => new EPub(_));
 
     epub.on('end', (err) => {
-      console.log('METADATA:\n');
-      console.log(epub.spine);
+      // console.log('METADATA:\n');
+      // console.log(epub.spine);
 
-      epub.getChapter(epub.spine.contents[10].id, (err, data) => {
-        console.log(data);
-      });
+      // epub.getChapter(epub.spine.contents[10].id, (err, data) => {
+      //   console.log(data);
+      // });
 
       writeBookData(epub.metadata.title, epub.metadata.creator, i);
     });

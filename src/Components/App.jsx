@@ -1,15 +1,18 @@
 import React from 'react';
-import Routes from 'react-router';
+import { Route, Switch } from 'react-router';
 import epub from '../epub';
 import firebase from '../firebase';
 import Notes from './Notes';
 import Books from './Books';
+import Authors from './Authors';
+import SingleBook from './SingleBook';
 
 import('../index.css');
 
 export default () => (
-  <div>
-    <Notes />
-    <Books />
-  </div>
+  <Switch>
+    <Route exact path="/" component={Authors} />
+    <Route exact path="/books" component={Books} />
+    <Route exact path="/books/:bookId" comoponent={SingleBook} />
+  </Switch>
 );

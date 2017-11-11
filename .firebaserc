@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "kindleshare-890d0"
-  }
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
+  },
 }

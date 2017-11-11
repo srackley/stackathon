@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
@@ -6,9 +7,11 @@ import App from './src/Components/App';
 
 function main() {
   render(
-    <AppContainer>
-      <App />
-    </AppContainer>,
+    <Router>
+      <AppContainer>
+        <App />
+      </AppContainer>
+    </Router>,
     document.getElementById('main')
   );
 }
