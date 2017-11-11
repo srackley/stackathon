@@ -14,11 +14,13 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-export function writeBookData(id, title, author) {
+export function writeBookData(id, title, author, contents, chapters) {
   firebase.database().ref(`books/${id}`).set({
     id,
     title,
-    author
+    author,
+    contents,
+    chapters
   });
 }
 export default firebase;

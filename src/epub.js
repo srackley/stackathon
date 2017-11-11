@@ -2,6 +2,7 @@ import axios from 'axios';
 import EPub from 'epub';
 import { writeBookData } from './firebase';
 
+const chapters = [];
 async function loadBook() {
   for (let i = 1; i < 56; i++) {
     const epub = await axios.get(`/books/book${i}.epub`, { responseType: 'arraybuffer' })
@@ -9,14 +10,17 @@ async function loadBook() {
       .then(_ => new EPub(_));
 
     epub.on('end', (err) => {
-      // console.log('METADATA:\n');
-      // console.log(epub.spine);
+      for (let i = 0; i < epub.spine.contents.length; i++) {
+        epub.getChapter(epub.spine.contents[i].id, (err, data) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          chapters.push(data);
+        });
 
-      // epub.getChapter(epub.spine.contents[10].id, (err, data) => {
-      //   console.log(data);
-      // });
-
-      writeBookData(i, epub.metadata.title, epub.metadata.creator);
+        writeBookData(i, epub.metadata.title, epub.metadata.creator, epub.spine.contents, chapters);
+      }
     });
 
     epub.parse();
