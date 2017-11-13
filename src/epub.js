@@ -3,7 +3,6 @@ import EPub from 'epub';
 
 async function loadBook() {
   const books = [];
-  const chapters = [];
   for (let i = 1; i < 54; i++) {
     const epub = await axios.get(`/books/book${i}.epub`, { responseType: 'arraybuffer' })
       .then(_ => window.buf = Buffer.from(_.data))

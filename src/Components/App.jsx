@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from 'react-router';
 import Books from './Books';
 import SingleBook from './SingleBook';
 import { fetchBooks } from '../store/reducers/books';
+import Navbar from './Navbar';
 
 import('./index.css');
 
@@ -15,10 +16,15 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/:bookId" component={SingleBook} />
-        <Route exact path="/" component={Books} />
-      </Switch>
+      <div>
+        <Navbar />
+        <div id="main">
+          <Switch>
+            <Route exact path="/:bookId" component={SingleBook} />
+            <Route exact path="/" component={Books} />
+          </Switch>
+        </div>
+      </div>
     );
   }
 }

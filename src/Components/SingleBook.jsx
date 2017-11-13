@@ -8,15 +8,16 @@ class SingleBook extends Component {
   render() {
     const i = this.props.match.params.bookId;
     const currentBook = this.props.books[i];
-    console.log(currentBook);
     return (
       <div>
-        <h1>{currentBook.title}</h1>
-        <h2>{currentBook.author}</h2>
-        <div>
-          {currentBook.contents.map((sec, index) => (
-            <Link key={index} to={`/${i}/${sec.id}`}>{sec.id.replace('_', ' ')}<br /></Link>
+        <div className="center">
+          <h1>{currentBook.title}</h1>
+          <h2>{currentBook.author}</h2>
+          <div id="chapters">
+            {currentBook.contents.map((sec, index) => (
+              <Link key={index} to={`/${i}/${sec.id}`}><div className="chapter">{sec.id.replace('_', ' ')}</div><br /></Link>
           ))}
+          </div>
         </div>
       </div>
     );
