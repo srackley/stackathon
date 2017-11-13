@@ -1,41 +1,32 @@
 import axios from 'axios';
 import EPub from 'epub';
 
-const books = [];
-
-async function loadBook(i) {
+async function loadBook() {
+  const books = [];
   const chapters = [];
+  for (let i = 1; i < 54; i++) {
+    const epub = await axios.get(`/books/book${i}.epub`, { responseType: 'arraybuffer' })
+      .then(_ => window.buf = Buffer.from(_.data))
+      .then(_ => new EPub(_));
 
-  const epub = await axios.get(`/books/book${i}.epub`, { responseType: 'arraybuffer' })
-    .then(_ => window.buf = Buffer.from(_.data))
-    .then(_ => new EPub(_));
+    epub.on('end', (err) => {
+      const book = {
+        title: epub.metadata.title,
+        author: epub.metadata.creator,
+        contents: epub.spine.contents
+      };
+      books.push(book);
+    });
 
-  epub.on('end', (err) => {
-    console.log(books);
-    for (let j = 0; j < epub.spine.contents.length; j++) {
-      epub.getChapter(epub.spine.contents[j].id, (err, data) => {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        chapters.push(data);
-      });
-    }
-
-    const book = {
-      title: epub.metadata.title,
-      author: epub.metadata.creator,
-      chapters,
-      contents: epub.spine.contents
-    };
-    books.push(book);
-  });
-
-  epub.parse();
+    epub.parse();
+  }
+  return books;
 }
 
-for (let i = 1; i < 30; i++) {
-  loadBook(i);
+async function getAllTheBooks() {
+  const answer = await loadBook();
+  return answer;
 }
 
-export default books;
+
+export default getAllTheBooks;

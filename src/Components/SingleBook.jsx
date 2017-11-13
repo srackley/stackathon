@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 
 class SingleBook extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
   render() {
-    console.log(this.state);
+    const i = this.props.match.params.bookId;
+    const currentBook = this.props.books[i];
+    console.log(currentBook);
     return (
       <div>
-        <h1>{this.state.title}</h1>
-        <h2>{this.state.author}</h2>
+        <h1>{currentBook.title}</h1>
+        <h2>{currentBook.author}</h2>
+        <div>
+          {currentBook.contents.map((sec, index) => (
+            <Link key={index} to={`/${i}/${sec.id}`}>{sec.id.replace('_', ' ')}<br /></Link>
+          ))}
+        </div>
       </div>
     );
   }
 }
 
-export default SingleBook;
+const mapState = state => ({
+  books: state.books
+});
+
+export default withRouter(connect(mapState)(SingleBook));

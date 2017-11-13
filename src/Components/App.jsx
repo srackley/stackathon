@@ -1,19 +1,34 @@
-import React from 'react';
-import { Route, Switch } from 'react-router';
-import epub from '../epub';
-import Notes from './Notes';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Route, Switch, withRouter } from 'react-router';
 import Books from './Books';
-import Authors from './Authors';
-import Chapters from './Chapters';
 import SingleBook from './SingleBook';
+import { fetchBooks } from '../store/reducers/books';
 
-import('../index.css');
+import('./index.css');
 
-export default () => (
-  <Switch>
-    <Route exact path="/" component={Authors} />
-    <Route exact path="/books/:bookId/:chapter" component={Chapters} />
-    <Route exact path="/books/:bookId" component={SingleBook} />
-    <Route exact path="/books" component={Books} />
-  </Switch>
-);
+class App extends Component {
+  componentWillMount() {
+    this.props.onLoad();
+  }
+
+
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/:bookId" component={SingleBook} />
+        <Route exact path="/" component={Books} />
+      </Switch>
+    );
+  }
+}
+
+const mapState = null;
+
+const mapDispatch = dispatch => ({
+  onLoad() {
+    dispatch(fetchBooks());
+  }
+});
+
+export default withRouter(connect(mapState, mapDispatch)(App));

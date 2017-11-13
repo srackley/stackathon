@@ -1,31 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import books from '../epub';
+import { withRouter } from 'react-router';
 
 class Books extends Component {
-  constructor() {
-    super();
-    this.state = {
-      books: []
-    };
-  }
-
   render() {
     return (
       <div className="app">
         <div>
           <section className="display-book">
             <ul className="flex-grid">
-              {books.map(book => (
-                <Link key={book.id} to={`/books/${book.id}`}>
-                  <div className="singleBook">
-                    <li>
-                      <h3>{book.title}</h3>
-                      <p>{book.author}
-                      </p>
-                    </li>
-                  </div>
-                </Link>
+              {
+                this.props.books.map((book, i) => (
+                  <Link key={i} to={`/${i}`}>
+                    <div className="singleBook">
+                      <li>
+                        <h3>{book.title}</h3>
+                        <h4>{book.author}</h4>
+                      </li>
+                    </div>
+                  </Link>
                     ))}
             </ul>
           </section>
@@ -35,4 +29,8 @@ class Books extends Component {
   }
 }
 
-export default Books;
+const mapState = state => ({
+  books: state.books
+});
+
+export default withRouter(connect(mapState)(Books));
