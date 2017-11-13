@@ -1,30 +1,41 @@
 import axios from 'axios';
 import EPub from 'epub';
-import { writeBookData } from './firebase';
 
-const chapters = [];
-async function loadBook() {
-  for (let i = 1; i < 56; i++) {
-    const epub = await axios.get(`/books/book${i}.epub`, { responseType: 'arraybuffer' })
-      .then(_ => window.buf = Buffer.from(_.data))
-      .then(_ => new EPub(_));
+const books = [];
 
-    epub.on('end', (err) => {
-      for (let i = 0; i < epub.spine.contents.length; i++) {
-        epub.getChapter(epub.spine.contents[i].id, (err, data) => {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          chapters.push(data);
-        });
+async function loadBook(i) {
+  const chapters = [];
 
-        writeBookData(i, epub.metadata.title, epub.metadata.creator, epub.spine.contents, chapters);
-      }
-    });
+  const epub = await axios.get(`/books/book${i}.epub`, { responseType: 'arraybuffer' })
+    .then(_ => window.buf = Buffer.from(_.data))
+    .then(_ => new EPub(_));
 
-    epub.parse();
-  }
+  epub.on('end', (err) => {
+    console.log(books);
+    for (let j = 0; j < epub.spine.contents.length; j++) {
+      epub.getChapter(epub.spine.contents[j].id, (err, data) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        chapters.push(data);
+      });
+    }
+
+    const book = {
+      title: epub.metadata.title,
+      author: epub.metadata.creator,
+      chapters,
+      contents: epub.spine.contents
+    };
+    books.push(book);
+  });
+
+  epub.parse();
 }
 
-loadBook();
+for (let i = 1; i < 30; i++) {
+  loadBook(i);
+}
+
+export default books;
